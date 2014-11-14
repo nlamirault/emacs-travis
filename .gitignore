@@ -1,0 +1,13 @@
+*~
+*\#*\#
+*.\#*
+*.elc
+.cask
+elpa
+.depend
+travis-pkg.el
+packages/*
+TAGS
+.DS_STORE
+dist
+test/travis-test-settings*
