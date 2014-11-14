@@ -21,6 +21,8 @@
 
 ;;; Code:
 
+(require 'travis-utils)
+
 (defun travis--get-auth ()
   "Retrieve auth."
   (let ((response
