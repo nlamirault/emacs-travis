@@ -28,7 +28,7 @@
     ;;(message "Builds : %s" response)
     (should (vectorp (cdar response)))
     (mapc (lambda (b)
-             (message "Build : %s" b)
+             ;; (message "Build : %s" b)
              (should (not (s-blank? (cdr (assoc 'message b)))))
              (should (not (s-blank? (cdr (assoc 'author_email b)))))
              (should (not (s-blank? (cdr (assoc 'author_name b)))))
