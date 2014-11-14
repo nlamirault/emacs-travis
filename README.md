@@ -23,9 +23,9 @@ or [Cask][]:
 
 ## Usage
 
-* Setup your Travis configurations :
+* Setup your Travis configurations using your Github token :
 
-        $ (setq travis-token "xxxxxxxx")
+        $ export TRAVIS_TOKEN=xxxxxx
 
 
 ## Development
