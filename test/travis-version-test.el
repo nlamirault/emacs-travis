@@ -24,7 +24,7 @@
 (require 'pkg-info)
 
 (ert-deftest travis-library-version ()
-  (should (string= "0.1.0" (emacs-travis-library-version))))
+  (should (string= "0.1.0" (travis--library-version))))
 
 (provide 'travis-version-test)
 ;;; travis-version-test.el ends here

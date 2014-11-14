@@ -74,18 +74,10 @@ If the version number could not be determined, signal an error,
 if called interactively, or if SHOW-VERSION is non-nil, otherwise
 just return nil."
   (interactive (list (not (or executing-kbd-macro noninteractive))))
-  (let* ((lib-version (emacs-travis-library-version))
-         (pkg-version (emacs-travis-package-version))
-         (version (cond
-                   ((and lib-version pkg-version
-                         (not (string= lib-version pkg-version)))
-                    (format "%s (package: %s)" lib-version pkg-version))
-                   ((or pkg-version lib-version)
-                    (format "%s" (or pkg-version lib-version))))))
-    (when show-version
-      (unless version
-        (error "Could not find out emacs-travis version"))
-      (message "emacs-travis %s" version))
+  (let* ((version (travis--library-version)))
+    (unless version
+      (error "Could not find out emacs-travis version"))
+    (message "emacs-travis %s" version)
     version))
 
 

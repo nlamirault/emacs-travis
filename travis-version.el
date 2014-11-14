@@ -25,7 +25,7 @@
 (require 'pkg-info)
 
 
-(defun emacs-travis-library-version ()
+(defun travis--library-version ()
   "Get the version in the emacs-travis client header."
   (-when-let (version (pkg-info-library-version 'travis))
     (pkg-info-format-version version)))

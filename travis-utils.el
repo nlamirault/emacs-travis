@@ -27,6 +27,7 @@
 
 
 (require 'travis-api)
+(require 'travis-version)
 
 
 ;; Errors
@@ -79,7 +80,7 @@ Defaults to `error'."
   (let ((headers (list (cons "User-Agent"
                              (s-concat travis--user-agent
                                        "/"
-                                       (emacs-travis-library-version)))
+                                       (travis--library-version)))
                        (cons "Accept"
                              "application/vnd.travis-ci.2+json"))))
     (if travis--token-id

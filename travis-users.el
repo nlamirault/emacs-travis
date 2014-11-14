@@ -21,6 +21,9 @@
 
 ;;; Code:
 
+(require 'travis-utils)
+
+
 (defun travis--get-users ()
   "Retrieve users."
   (travis--perform-http-request "GET" "users" nil 200))

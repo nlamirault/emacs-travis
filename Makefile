@@ -67,7 +67,7 @@ test: build
 .PHONY: clean
 clean :
 	@echo -e "$(OK_COLOR)[$(APP)] Cleanup$(NO_COLOR)"
-	@rm -fr $(OBJECTS) elpa $(ARCHIVE).gz
+	@rm -fr $(OBJECTS) elpa $(APP)-pkg.el $(APP)-pkg.elc $(ARCHIVE).gz
 
 reset : clean
 	@rm -rf .cask

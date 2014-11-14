@@ -21,6 +21,8 @@
 
 ;;; Code:
 
+(require 'travis-utils)
+
 (defun travis--get-repositories ()
   "Retrieve repository from his REPO-ID."
   (travis--perform-http-request "GET"
