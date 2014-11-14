@@ -2,6 +2,7 @@
 
 [![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
+[![drone][badge-drone]][drone]
 [![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
 [![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
 
@@ -72,6 +73,8 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [LICENSE]: https://github.com/nlamirault/emacs-travis/blob/master/LICENSE
 [travis]: https://travis-ci.org/nlamirault/emacs-travis
 [badge-travis]: http://img.shields.io/travis/nlamirault/emacs-travis.svg?style=flat
+[badge-drone]: https://drone.io/github.com/nlamirault/emacs-travis/status.png
+[drone]: https://drone.io/github.com/nlamirault/emacs-travis/latest
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
