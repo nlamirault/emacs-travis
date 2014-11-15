@@ -69,7 +69,7 @@
   (let ((path (s-concat travis-source-dir file)))
     (message (ansi-yellow "[travis] Load library from %s" path))
     (undercover "*.el" (:exclude "*-test.el"))
-    (require 'travis path)))
+    (require 'travis))); path)))
 
 
 (defun setup-travis ()
