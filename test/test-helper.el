@@ -71,6 +71,7 @@
     (undercover "*.el" (:exclude "*-test.el"))
     (require 'travis path)))
 
+
 (defun setup-travis ()
   "Setup Travis token from TRAVIS_TOKEN environment variable."
   (setq travis-token-id (getenv "TRAVIS_TOKEN")))
