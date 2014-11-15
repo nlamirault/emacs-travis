@@ -80,6 +80,4 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
 [Issue tracker]: https://github.com/nlamirault/emacs-travis/issues
-
-[Travis]: https://www.travis.com/
 [Helm]: https://github.com/emacs-helm/helm
