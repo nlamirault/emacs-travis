@@ -85,8 +85,11 @@ package: clean pkg-el
 	rm -fr dist
 
 .PHONY: ci
-ci : build
-	@${CASK} exec ert-runner --no-win < /dev/tty
+ci :
+	@echo -e "$(OK_COLOR)[$(APP)] Unit tests with code coverage$(NO_COLOR)"
+	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
+		$(EMACSFLAGS) \
+		-l test/run-tests
 
 %.elc : %.el
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
