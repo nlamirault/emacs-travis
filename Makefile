@@ -85,7 +85,7 @@ package: clean pkg-el
 	rm -fr dist
 
 .PHONY: ci
-ci :
+ci : elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Unit tests with code coverage$(NO_COLOR)"
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 		$(EMACSFLAGS) \
