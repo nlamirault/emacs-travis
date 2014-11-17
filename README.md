@@ -3,6 +3,7 @@
 [![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
+[![wercker][badge-wercker]][wercker]
 [![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
 [![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
@@ -82,6 +83,8 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [badge-travis]: http://img.shields.io/travis/nlamirault/emacs-travis.svg?style=flat
 [badge-drone]: https://drone.io/github.com/nlamirault/emacs-travis/status.png
 [drone]: https://drone.io/github.com/nlamirault/emacs-travis/latest
+[badge-wercker]: https://app.wercker.com/status/230e39942045191c79677ed663572c69/s
+[wercker]: https://app.wercker.com/project/bykey/230e39942045191c79677ed663572c69
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
