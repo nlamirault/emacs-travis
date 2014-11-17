@@ -57,10 +57,12 @@
 
 (require 'travis-version)
 (require 'travis-utils)
+(require 'travis-ui)
 (require 'travis-auth)
 (require 'travis-users)
 (require 'travis-repos)
 (require 'travis-builds)
+(require 'travis-mode)
 
 
 ;;;###autoload
