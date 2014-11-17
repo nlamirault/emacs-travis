@@ -1,6 +1,5 @@
 # emacs-travis
 
-[![License GPL 3][badge-license]][LICENSE]
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
 [![wercker][badge-wercker]][wercker]
