@@ -1,0 +1,11 @@
+box: wercker-labs/docker
+build:
+    steps:
+        - script:
+            name: elpa
+            code: |
+                make elpa
+        - script:
+            name: tests
+            code: |
+                make ci
