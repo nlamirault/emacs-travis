@@ -28,6 +28,12 @@ or [Cask][]:
 
         $ export TRAVIS_TOKEN=xxxxxx
 
+* Display your Travis build status for some projects:
+
+        M-x travis-show-projects
+
+See ![TravisCI](images/emacs-travis.png)
+
 
 ## Development
 
