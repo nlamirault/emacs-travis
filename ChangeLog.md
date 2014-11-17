@@ -2,6 +2,7 @@
 
 # Version 0.2.0 (IN PROGRESS)
 
+- Implements Travis mode to display projects build status
 - Enable code coverage
 
 # Version 0.1.0 (11/14/2014)
