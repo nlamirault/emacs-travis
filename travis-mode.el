@@ -27,10 +27,12 @@
 
 (require 'ansi-color)
 (require 'browse-url)
+(require 'cl-lib)
 (require 'tabulated-list)
 
 ;; Travis library
 
+(require 'travis-builds)
 (require 'travis-repos)
 (require 'travis-ui)
 
@@ -110,7 +112,7 @@
                             (format-seconds "%m min %s sec"
                                             (cdr (assoc 'duration b)))
                             (cdr (assoc 'finished_at b))))))
-          (cdadr builds)))
+          (cl-cdadr builds)))
 
 (defvar travis--project-builds-mode-history nil)
 

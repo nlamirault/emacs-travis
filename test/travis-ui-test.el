@@ -21,6 +21,8 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 
 (defun extract-color-face (string)
   (cadr (text-properties-at 0 string)))
@@ -29,7 +31,7 @@
 (defun test-travis-face (state face faces)
   (let ((f (extract-color-face (colorize-build-state state))))
     (should (eq face f))
-    (should (find f faces))))
+    (should (cl-find f faces))))
 
 (ert-deftest test-travis-ui-colors-states ()
   (let ((faces (face-list)))
