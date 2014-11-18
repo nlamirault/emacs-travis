@@ -36,6 +36,8 @@
 
 
 ;; Projects
+;; ----------
+
 
 (defvar travis--projects-mode-history nil)
 
@@ -75,7 +77,8 @@
     map)
   "Keymap for `travis-projects-mode' major mode.")
 
-(define-derived-mode travis-projects-mode tabulated-list-mode "Travis projects"
+(define-derived-mode travis-projects-mode tabulated-list-mode
+  "Travis projects"
   "Major mode for browsing Travis projects."
   :group 'travis
   (setq tabulated-list-format [;("ID" 5 t)
@@ -87,6 +90,71 @@
   (setq tabulated-list-sort-key (cons "Name" nil))
   (tabulated-list-init-header))
 
+
+;; Project builds
+;; ---------------
+
+;; Builds
+
+(defun create-builds-entries (builds)
+  "Create entries for 'tabulated-list-entries from BUILDS."
+  (mapcar (lambda (b)
+            (let ((id (number-to-string (cdr (assoc 'id b)))))
+              (list id
+                    (vector id
+                            (cdr (assoc 'number b))
+                            (colorize-build-state (cdr (assoc 'state b)))
+                            "Message"
+                            "Commit"
+                            "Committer"
+                            (format-seconds "%m min %s sec"
+                                            (cdr (assoc 'duration b)))
+                            (cdr (assoc 'finished_at b))))))
+          (cdadr builds)))
+
+(defvar travis--project-builds-mode-history nil)
+
+(defun travis-show-project-builds (slug)
+  "Show Travis project builds using user request SLUG."
+  (interactive
+   (list (read-from-minibuffer "Project: "
+                               (car travis--projects-mode-history)
+                               nil
+                               nil
+                               'travis--projects-mode-history)))
+  (pop-to-buffer "*Travis builds*" nil)
+  (travis-project-builds-mode)
+  (setq tabulated-list-entries
+        (create-builds-entries (travis--get-builds slug)))
+  (tabulated-list-print t))
+
+
+;; Travis project builds mode
+
+(defvar travis-project-builds-mode-hook nil)
+
+(defvar travis-project-builds-mode-map
+  (let ((map (make-keymap)))
+    (define-key map (kbd "w") 'travis-goto-project)
+    map)
+  "Keymap for `travis-project-builds-mode' major mode.")
+
+(define-derived-mode travis-project-builds-mode tabulated-list-mode
+  "Travis project buids"
+  "Major mode for browsing Travis project builds."
+  :group 'travis
+  (setq tabulated-list-format [;("ID" 5 t)
+                               ("Build" 10 t)
+                               ("Number" 7 t)
+                               ("State" 10 t)
+                               ("Message"  25 t)
+                               ("Commit" 15 t)
+                               ("Committer" 10 nil)
+                               ("Duration" 15 nil)
+                               ("Finished" 15 nil)])
+  (setq tabulated-list-padding 2)
+  (setq tabulated-list-sort-key (cons "Build" nil))
+  (tabulated-list-init-header))
 
 
 (provide 'travis-mode)
