@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-
+(require 'travis-users)
 
 (ert-deftest test-travis-get-users ()
   (travis--get-auth)

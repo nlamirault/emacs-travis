@@ -22,6 +22,9 @@
 ;;; Code:
 
 
+(require 'travis-builds)
+
+
 (ert-deftest test-travis-get-builds-for-repo ()
   (travis--get-auth)
   (let ((response (travis--get-builds "nlamirault/scame")))

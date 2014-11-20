@@ -21,6 +21,7 @@
 
 ;;; Code:
 
+(require 'travis-repos)
 
 
 (ert-deftest test-travis-get-repositories ()
