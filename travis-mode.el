@@ -103,7 +103,8 @@
   (mapcar (lambda (b)
             ;(let ((id (number-to-string (cdr (assoc 'id b)))))
             (let ((id (format "%s" (cdr (assoc 'id b))))
-                  (duration (cdr (assoc 'duration b))))
+                  (duration (cdr (assoc 'duration b)))
+                  (finished (cdr (assoc 'finished_at b))))
               (list id
                     (vector id
                             (cdr (assoc 'number b))
@@ -113,8 +114,10 @@
                             "Committer"
                             (if (numberp duration)
                                 (format-seconds "%m min %s sec" duration)
-                              duration)
-                            (cdr (assoc 'finished_at b))))))
+                              "")
+                            (if (s-present? finished)
+                                finished
+                              "")))))
           (cl-cdadr builds)))
 
 (defvar travis--project-builds-mode-history nil)
