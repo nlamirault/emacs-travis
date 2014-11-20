@@ -21,6 +21,7 @@
 
 ;;; Code:
 
+(require 'travis-repos)
 
 
 (ert-deftest test-travis-get-repositories ()
@@ -30,7 +31,6 @@
     (should (vectorp (cdar response)))
     (mapc (lambda (r)
             ;;(message "repo: %s" r)
-            (should (not (s-blank? (cdr (assoc 'github_language r)))))
             (should (not (s-blank? (cdr (assoc 'slug r)))))
             (should (numberp (cdr (assoc 'id r)))))
           (cdar response))))

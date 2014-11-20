@@ -27,6 +27,7 @@
 ;;; Code:
 
 (require 'ansi)
+(require 'cl) ;; http://emacs.stackexchange.com/questions/2864/symbols-function-definition-is-void-cl-macroexpand-all-when-trying-to-instal
 (require 'f)
 (require 'undercover)
 

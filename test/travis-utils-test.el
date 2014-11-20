@@ -22,6 +22,9 @@
 ;;; Code:
 
 
+(require 'travis-utils)
+
+
 (ert-deftest test-travis-api-headers-without-authentication ()
   (let ((headers (travis--get-headers))
         (token (getenv "TRAVIS_TOKEN")))

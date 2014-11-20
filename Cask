@@ -13,6 +13,7 @@
 (development
  (depends-on "f")
  (depends-on "s")
+ (depends-on "ansi")
  (depends-on "pkg-info")
  (depends-on "ert")
  (depends-on "ert-runner")

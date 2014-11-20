@@ -21,9 +21,14 @@
 
 ;;; Code:
 
-(require 'ansi-color)
+(require 'ansi)
 (require 'tabulated-list)
 
+
+;;
+;; to display faces in IELM :
+;; ELISP (list-faces-display "travis")
+;;
 
 ;; Faces
 
@@ -34,8 +39,18 @@
   :group 'travis)
 
 (defface travis--gray-face
-  '((((class color)) :foreground "#"))
+  '((((class color)) :foreground "#b1b6b6"))
   "Gray color.."
+  :group 'travis)
+
+(defface travis--cyan-face
+  '((((class color)) :foreground "#00ffff"))
+  "Cyan color.."
+  :group 'travis)
+
+(defface travis--yellow-face
+  '((((class color)) :foreground "#e5e500"))
+  "Yellow color."
   :group 'travis)
 
 (defface travis--orange-face
@@ -53,44 +68,33 @@
   "Green color."
   :group 'travis)
 
-(defface travis--yellow-face
-  '((((class color)) :foreground "#e5e500"))
-  "Yellow color."
-  :group 'travis)
 
 
 (defun colorize-build-state (state)
   "Colorize face using STATE."
   (cond
+   ((string= state "canceled")
+    (propertize state 'face 'travis--gray-face))
    ((string= state "failed")
     (propertize state 'face 'travis--red-face))
    ((string= state "errored")
     (propertize state 'face 'travis--orange-face))
    ((string= state "passed")
     (propertize state 'face 'travis--green-face))
+   ((string= state "created")
+    (propertize state 'face 'travis--cyan-face))
    (t (propertize state 'face 'travis--gray-face))))
 
 
-(defun colorize-dot (color)
-  (cond
-   ((string= color  "red")
-    (propertize "●" 'face 'travis--red-face))
-   ((string= color "yellow")
-    (propertize "●" 'face 'travis--yellow-face))
-   ((string= color  "green")
-    (propertize "●" 'face 'travis--green-face))
-   (t (concat "Unknown: " "'" color "' "))))
-
-;;  failed     nlamirault/cl-cloudstack-client
-;;              nlamirault/cl-gdata
-;;              nlamirault/cl-geonames
-;;   failed     nlamirault/cl-lastfm
-;;   passed     nlamirault/cletris
-;;   passed     nlamirault/climc
-;;   passed     nlamirault/climon
-;;   errored    nlamirault/cloudstack-mode
-;;              nlamirault/deis
-;; failed     nlamirault/divona
+;; (defun colorize-dot (color)
+;;   (cond
+;;    ((string= color  "red")
+;;     (propertize "●" 'face 'travis--red-face))
+;;    ((string= color "yellow")
+;;     (propertize "●" 'face 'travis--yellow-face))
+;;    ((string= color  "green")
+;;     (propertize "●" 'face 'travis--green-face))
+;;    (t (concat "Unknown: " "'" color "' "))))
 
 (provide 'travis-ui)
 ;;; travis-ui.el ends here

@@ -1,4 +1,4 @@
-;;; travis-users-test.el --- Tests for Travis tools
+;;; travis-ui-test.el --- Tests for UI Travis settings
 
 ;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -21,17 +21,26 @@
 
 ;;; Code:
 
-(require 'travis-users)
+(require 'cl-lib)
 
-(ert-deftest test-travis-get-users ()
-  (travis--get-auth)
-  (let ((response (travis--get-users)))
-    ;; (message "Users Response: %s" response)
-    (should (not (s-blank? (cdr (assoc 'locale (cdar response))))))
-    (should (not (s-blank? (cdr (assoc 'email (cdar response))))))
-    (should (not (s-blank? (cdr (assoc 'name (cdar response))))))
-    (should (numberp (cdr (assoc 'id (cdar response)))))
-    ))
 
-(provide 'travis-users-test)
-;;; travis-users-test.el ends here
+(defun extract-color-face (string)
+  (cadr (text-properties-at 0 string)))
+
+
+(defun test-travis-face (state face faces)
+  (let ((f (extract-color-face (colorize-build-state state))))
+    (should (eq face f))
+    (should (cl-find f faces))))
+
+(ert-deftest test-travis-ui-colors-states ()
+  (let ((faces (face-list)))
+    (test-travis-face "canceled" 'travis--gray-face faces)
+    (test-travis-face "created" 'travis--cyan-face faces)
+    (test-travis-face "passed" 'travis--green-face faces)
+    (test-travis-face "errored" 'travis--orange-face faces)
+    (test-travis-face "failed" 'travis--red-face faces)))
+
+
+(provide 'travis-ui-test)
+;;; travis-ui-test.el ends here

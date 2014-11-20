@@ -21,6 +21,9 @@
 
 ;;; Code:
 
+(require 'travis-utils)
+
+
 (ert-deftest test-travis-headers-after-authentication ()
   (travis--get-auth)
   (let ((headers (travis--get-headers)))
