@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(require 'ansi-color)
+(require 'ansi)
 (require 'browse-url)
 (require 'cl-lib)
 (require 'tabulated-list)
