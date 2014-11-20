@@ -60,13 +60,13 @@
 (defun create-projects-entries (projects)
   "Create entries for 'tabulated-list-entries from PROJECTS."
   (mapcar (lambda (p)
-            (let ((id (number-to-string (cdr (assoc 'id p)))))
-              (list id
-                    (vector ;id
-                     ;;(cdr (assoc 'last_build_state p))
-                     (colorize-build-state (cdr (assoc 'last_build_state p)))
-                     (cdr (assoc 'slug p))
-                     (cdr (assoc 'description p))))))
+            ;(let ((id (number-to-string (cdr (assoc 'id p)))))
+            (list (format "%s" (cdr (assoc 'id p)))
+                  (vector ;id
+                   ;;(cdr (assoc 'last_build_state p))
+                   (colorize-build-state (cdr (assoc 'last_build_state p)))
+                   (cdr (assoc 'slug p))
+                   (cdr (assoc 'description p)))))
           (cdar projects)))
 
 ;; Travis projects mode
@@ -101,7 +101,9 @@
 (defun create-builds-entries (builds)
   "Create entries for 'tabulated-list-entries from BUILDS."
   (mapcar (lambda (b)
-            (let ((id (number-to-string (cdr (assoc 'id b)))))
+            ;(let ((id (number-to-string (cdr (assoc 'id b)))))
+            (let ((id (format "%s" (cdr (assoc 'id b))))
+                  (duration (cdr (assoc 'duration b))))
               (list id
                     (vector id
                             (cdr (assoc 'number b))
@@ -109,8 +111,9 @@
                             "Message"
                             "Commit"
                             "Committer"
-                            (format-seconds "%m min %s sec"
-                                            (cdr (assoc 'duration b)))
+                            (if (numberp duration)
+                                (format-seconds "%m min %s sec" duration)
+                              duration)
                             (cdr (assoc 'finished_at b))))))
           (cl-cdadr builds)))
 
