@@ -15,7 +15,7 @@
 
 The recommended way to install ``emacs-travis`` is via [MELPA][]:
 
-    M-x package-install emacs-travis
+    M-x package-install travis
 
 or [Cask][]:
 
