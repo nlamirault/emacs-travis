@@ -19,7 +19,7 @@ The recommended way to install ``emacs-travis`` is via [MELPA][]:
 
 or [Cask][]:
 
-	(depends-on "emacs-travis")
+	(depends-on "travis")
 
 
 ## Usage
