@@ -18,6 +18,7 @@ APP = travis
 EMACS = emacs
 EMACSFLAGS = -L .
 CASK = cask
+VAGRANT = vagrant
 
 VERSION=$(shell \
         grep Version travis.el \
@@ -63,6 +64,11 @@ test: build
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 		$(EMACSFLAGS) \
 		-l test/run-tests
+
+.PHONY: virtual-test
+virtual-test:
+	@$(VAGRANT) up
+	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean init test"
 
 .PHONY: clean
 clean :
