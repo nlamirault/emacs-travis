@@ -25,7 +25,6 @@
 
 ;;; Code:
 
-(require 'ansi)
 (require 'browse-url)
 (require 'cl-lib)
 (require 'tabulated-list)

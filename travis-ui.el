@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(require 'ansi)
+;;(require 'ansi)
 (require 'tabulated-list)
 
 
