@@ -46,6 +46,11 @@ help:
 	@echo -e "$(WARN_COLOR)- clean$(NO_COLOR)   : cleanup"
 	@echo -e "$(WARN_COLOR)- package$(NO_COLOR) : packaging"
 
+check-env:
+        ifndef TRAVIS_TOKEN
+	    $(error TRAVIS_TOKEN is undefined)
+        endif
+
 init:
 	@echo -e "$(OK_COLOR)[$(APP)] Initialize environment$(NO_COLOR)"
 	@$(CASK) --dev install
@@ -59,16 +64,20 @@ elpa:
 .PHONY: build
 build : elpa $(OBJECTS)
 
-test: build
+test: build check-env
 	@echo -e "$(OK_COLOR)[$(APP)] Unit tests$(NO_COLOR)"
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 		$(EMACSFLAGS) \
 		-l test/run-tests
 
 .PHONY: virtual-test
-virtual-test:
+virtual-test: check-env
 	@$(VAGRANT) up
-	@$(VAGRANT) ssh -c "make -C /vagrant EMACS=$(EMACS) clean init test"
+	@$(VAGRANT) ssh -c "source /tmp/.emacs-travis.rc && make -C /vagrant EMACS=$(EMACS) clean init test"
+
+.PHONY: virtual-clean
+virtual-clean:
+	@$(VAGRANT) destroy
 
 .PHONY: clean
 clean :

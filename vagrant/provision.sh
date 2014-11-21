@@ -4,6 +4,9 @@
 # Description     : Install Emacs for emacs-travis tests
 # ------------------------------------------------------
 
+TOKEN=$1
+# echo "Token : $TOKEN"
+
 CASK_VERSION='0.6.0'
 
 ppa () {
@@ -36,3 +39,7 @@ if ! [ -d "$CASK_DIR" -a -x "/$CASK_DIR/bin/cask" ]; then
   wget -O - https://github.com/cask/cask/archive/v$CASK_VERSION.tar.gz | sudo tar xz -C /opt
   sudo ln -fs "$CASK_DIR/bin/cask" /usr/local/bin
 fi
+
+echo "#!/bin/bash" > /tmp/.emacs-travis.rc
+echo "" >> /tmp/.emacs-travis.rc
+echo "export TRAVIS_TOKEN=\"$TOKEN\"" >> /tmp/.emacs-travis.rc
