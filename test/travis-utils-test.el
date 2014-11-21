@@ -28,7 +28,7 @@
 (ert-deftest test-travis-api-headers-without-authentication ()
   (let ((headers (travis--get-headers))
         (token (getenv "TRAVIS_TOKEN")))
-    (should (string-equal "emacs-travis/0.1.0"
+    (should (string-equal "emacs-travis/0.3.0"
                           (assoc-default "User-Agent" headers)))
     (should (string-equal "application/vnd.travis-ci.2+json"
                           (assoc-default "Accept" headers)))

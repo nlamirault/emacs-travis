@@ -23,11 +23,14 @@
 
 (require 'pkg-info)
 
+(setq current-version "0.3.0")
+
+
 (ert-deftest travis-library-version ()
-  (should (string= "0.1.0" (travis--library-version))))
+  (should (string= current-version (travis--library-version))))
 
 (ert-deftest emacs-travis-version ()
-  (should (string= "0.1.0" (emacs-travis-version))))
+  (should (string= current-version (emacs-travis-version))))
 
 
 (provide 'travis-version-test)
