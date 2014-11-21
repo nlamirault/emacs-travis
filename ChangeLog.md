@@ -1,7 +1,10 @@
 # emacs-travis ChangeLog
 
-# Version 0.3.0 (IN PROGRESS)
+# Version 0.3.0 (11/21/2014)
 
+- Add Vagrant configuration for testing in a virtual machine
+- ``FIX`` remove ansi library to dependencies
+- ``FIX`` if duration input is empty, display 0.
 - Test TravisUI faces
 
 # Version 0.2.0 (11/16/2014)
