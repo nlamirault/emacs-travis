@@ -87,6 +87,8 @@ before_install:
   - git submodule --quiet update --init --recursive
 
 install:
+  - curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+  - export PATH="${HOME}/.cask/bin:$PATH"
   - if [ "$METHOD" = 'evm' ]; then
         sudo mkdir /usr/local/evm &&
         sudo chown travis:travis /usr/local/evm &&
