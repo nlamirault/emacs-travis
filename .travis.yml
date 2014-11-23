@@ -83,8 +83,8 @@ env:
 ### of all test dependencies are also used.
 ###
 
-before_install:
-  - git submodule --quiet update --init --recursive
+# before_install:
+#   - git submodule --quiet update --init --recursive
 
 install:
   - if [ "$METHOD" = 'evm' ]; then

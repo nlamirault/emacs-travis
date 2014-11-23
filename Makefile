@@ -102,6 +102,7 @@ package: clean pkg-el
 .PHONY: ci
 ci : elpa
 	@echo -e "$(OK_COLOR)[$(APP)] Unit tests with code coverage$(NO_COLOR)"
+        @echo -e "Emacs version : $(EMACS) --version"
 	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
 		$(EMACSFLAGS) \
 		-l test/run-tests
