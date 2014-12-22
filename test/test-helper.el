@@ -2,7 +2,7 @@
 
 ;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-;; Author: Nicolas Lamirault <nicolas.lamirault@chmouel.com>
+;; Author: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 ;; Homepage: https://github.com/nlamirault/emacs-travis
 
 ;;; License:
