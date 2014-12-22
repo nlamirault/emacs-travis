@@ -23,7 +23,7 @@
 
 (require 'pkg-info)
 
-(setq current-version "0.3.0")
+(setq current-version "0.4.0")
 
 
 (ert-deftest travis-library-version ()
