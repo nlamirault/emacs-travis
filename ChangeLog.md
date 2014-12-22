@@ -1,5 +1,10 @@
 # emacs-travis ChangeLog
 
+# Version 0.4.0 (12/22/2014)
+
+- Update unit tests
+- ``FIX`` TravisCI setup
+
 # Version 0.3.0 (11/21/2014)
 
 - Add Vagrant configuration for testing in a virtual machine
