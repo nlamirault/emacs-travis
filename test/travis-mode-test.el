@@ -47,7 +47,7 @@
   (travis-show-project-builds "nlamirault/emacs-travis")
   (with-current-buffer "*Travis builds*"
     (let ((content (buffer-string)))
-      (should (s-contains? "41586825"
+      (should (s-contains? "Committer"
                            content)))))
 
 
