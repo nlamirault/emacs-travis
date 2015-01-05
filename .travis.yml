@@ -134,7 +134,7 @@ before_script:
 ###
 
 script:
-  echo "Method is $METHOD " && $EMACS --version && EMACS="$EMACS" make init ci
+  echo "Method is $METHOD " && $EMACS --version && EMACS="$EMACS" make init test
 
 ###
 ### settings

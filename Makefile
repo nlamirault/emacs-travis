@@ -1,4 +1,4 @@
-# Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -67,9 +67,7 @@ build : elpa $(OBJECTS)
 
 test: build check-env
 	@echo -e "$(OK_COLOR)[$(APP)] Unit tests$(NO_COLOR)"
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-l test/run-tests
+	@$(CASK) exec ert-runner
 
 .PHONY: virtual-test
 virtual-test: check-env
@@ -99,13 +97,6 @@ package: clean pkg-el
 	cp dist/$(ARCHIVE) .
 	gzip $(ARCHIVE)
 	rm -fr dist
-
-.PHONY: ci
-ci : elpa
-	@echo -e "$(OK_COLOR)[$(APP)] Unit tests with code coverage$(NO_COLOR)"
-	$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \
-		$(EMACSFLAGS) \
-		-l test/run-tests
 
 %.elc : %.el
 	@$(CASK) exec $(EMACS) --no-site-file --no-site-lisp --batch \

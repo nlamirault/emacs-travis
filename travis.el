@@ -39,8 +39,6 @@
 
 ;;; Usage:
 
-
-
 ;;; Code:
 
 (require 's)

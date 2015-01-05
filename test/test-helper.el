@@ -28,6 +28,7 @@
 
 (require 'ansi)
 (require 'cl) ;; http://emacs.stackexchange.com/questions/2864/symbols-function-definition-is-void-cl-macroexpand-all-when-trying-to-instal
+(require 'ert)
 (require 'f)
 (require 'undercover)
 
@@ -55,7 +56,8 @@
             (when (string-match (s-concat username "/.emacs.d") path)
               (message (ansi-yellow "Suppression path %s" path))
               (setq load-path (delete path load-path))))
-        load-path))
+        load-path)
+  (add-to-list 'load-path default-directory))
 
 (defun load-unit-tests (path)
   "Load all unit test from PATH."
@@ -70,12 +72,30 @@
   (let ((path (s-concat travis-source-dir file)))
     (message (ansi-yellow "[travis] Load library from %s" path))
     (undercover "*.el" (:exclude "*-test.el"))
-    (require 'travis))); path)))
+    (require 'travis path)))
 
 
 (defun setup-travis ()
   "Setup Travis token from TRAVIS_TOKEN environment variable."
   (setq travis-token-id (getenv "TRAVIS_TOKEN")))
+
+
+(defmacro with-test-sandbox (&rest body)
+  "Evaluate BODY in an empty sandbox directory."
+  `(unwind-protect
+       (condition-case nil ;ex
+           (let (;;(user-emacs-directory travis-sandbox-path)
+                 (default-directory travis-source-dir))
+             ;; (unless (f-dir? travis-sandbox-path)
+             ;;   (f-mkdir travis-sandbox-path))
+             (cleanup-load-path)
+             (load-library "/travis.el")
+             (setup-travis)
+             ,@body)
+         ;; (f-delete overseer-sandbox-path :force)))
+         )))
+         ;; (error
+         ;;  (message (ansi-red "[Scame] Error during unit tests : %s" ex))))))
 
 
 (provide 'test-helper)

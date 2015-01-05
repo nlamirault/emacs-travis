@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(require 'cl-lib)
+;; (require 'cl-lib)
 
 
 (defun extract-color-face (string)
@@ -34,12 +34,13 @@
     (should (cl-find f faces))))
 
 (ert-deftest test-travis-ui-colors-states ()
-  (let ((faces (face-list)))
-    (test-travis-face "canceled" 'travis--gray-face faces)
-    (test-travis-face "created" 'travis--cyan-face faces)
-    (test-travis-face "passed" 'travis--green-face faces)
-    (test-travis-face "errored" 'travis--orange-face faces)
-    (test-travis-face "failed" 'travis--red-face faces)))
+  (with-test-sandbox
+   (let ((faces (face-list)))
+     (test-travis-face "canceled" 'travis--gray-face faces)
+     (test-travis-face "created" 'travis--cyan-face faces)
+     (test-travis-face "passed" 'travis--green-face faces)
+     (test-travis-face "errored" 'travis--orange-face faces)
+     (test-travis-face "failed" 'travis--red-face faces))))
 
 
 (provide 'travis-ui-test)
