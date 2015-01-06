@@ -1,6 +1,6 @@
 ;; test-helper.el --- Test helpers for travis.el
 
-;; Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; Author: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 ;; Homepage: https://github.com/nlamirault/emacs-travis
