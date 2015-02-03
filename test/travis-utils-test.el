@@ -21,18 +21,20 @@
 
 ;;; Code:
 
+(require 's)
 
-(require 'travis-utils)
-
+;; (require 'travis-utils)
 
 (ert-deftest test-travis-api-headers-without-authentication ()
-  (let ((headers (travis--get-headers))
-        (token (getenv "TRAVIS_TOKEN")))
-    (should (string-equal "emacs-travis/0.3.0"
-                          (assoc-default "User-Agent" headers)))
-    (should (string-equal "application/vnd.travis-ci.2+json"
-                          (assoc-default "Accept" headers)))
-    (should (eql nil (assoc-default "Authorization" headers)))))
+  (with-test-sandbox
+   (let ((headers (travis--get-headers))
+         (version (travis--library-version))
+         (token (getenv "TRAVIS_TOKEN")))
+     (should (string-equal (s-concat "emacs-travis/" version)
+                           (assoc-default "User-Agent" headers)))
+     (should (string-equal "application/vnd.travis-ci.2+json"
+                           (assoc-default "Accept" headers)))
+     (should (eql nil (assoc-default "Authorization" headers))))))
 
 
 (provide 'travis-utils-test)

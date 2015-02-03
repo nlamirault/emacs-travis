@@ -2,7 +2,6 @@
 
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![wercker][badge-wercker]][wercker]
 [![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
 [![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)

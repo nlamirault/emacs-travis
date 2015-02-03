@@ -21,17 +21,18 @@
 
 ;;; Code:
 
-(require 'travis-users)
+;; (require 'travis-users)
 
 (ert-deftest test-travis-get-users ()
-  (travis--get-auth)
-  (let ((response (travis--get-users)))
-    ;; (message "Users Response: %s" response)
-    (should (not (s-blank? (cdr (assoc 'locale (cdar response))))))
-    (should (not (s-blank? (cdr (assoc 'email (cdar response))))))
-    (should (not (s-blank? (cdr (assoc 'name (cdar response))))))
-    (should (numberp (cdr (assoc 'id (cdar response)))))
-    ))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--get-users)))
+     ;; (message "Users Response: %s" response)
+     (should (not (s-blank? (cdr (assoc 'locale (cdar response))))))
+     (should (not (s-blank? (cdr (assoc 'email (cdar response))))))
+     (should (not (s-blank? (cdr (assoc 'name (cdar response))))))
+     (should (numberp (cdr (assoc 'id (cdar response)))))
+     )))
 
 (provide 'travis-users-test)
 ;;; travis-users-test.el ends here
