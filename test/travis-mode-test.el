@@ -21,35 +21,39 @@
 
 ;;; Code:
 
-(require 'travis-mode)
+;; (require 'travis-mode)
 
 
 (ert-deftest test-travis-mode-projects-keybindings ()
-  (travis-projects-mode)
-  (should (eql 'travis-goto-project
-               (key-binding (kbd "w")))))
+  (with-test-sandbox
+   (travis-projects-mode)
+   (should (eql 'travis-goto-project
+                (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-projects ()
-  (travis-show-projects "nlamirault")
-  (with-current-buffer "*Travis projects*"
-    (let ((content (buffer-string)))
-      (should (s-contains? "nlamirault/emacs-gitlab   A Gitlab client for Emacs"
-                           content))
-      (should (s-contains? "nlamirault/emacs-travis   An Emacs client for TravisCI"
-                           content)))))
+  :tags '(current)
+  (with-test-sandbox
+   (travis-show-projects "nlamirault")
+   (with-current-buffer "*Travis projects*"
+     (let ((content (buffer-string)))
+       (should (s-contains? "nlamirault/emacs-gitlab"
+                            content))
+       (should (s-contains? "nlamirault/emacs-travis"
+                            content))))))
 
 (ert-deftest test-travis-mode-builds-keybindings ()
-  (travis-project-builds-mode)
-  (should (eql 'travis-goto-project
-               (key-binding (kbd "w")))))
+  (with-test-sandbox
+   (travis-project-builds-mode)
+   (should (eql 'travis-goto-project
+                (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-project-builds ()
-  (travis-show-project-builds "nlamirault/emacs-travis")
-  (with-current-buffer "*Travis builds*"
-    (let ((content (buffer-string)))
-      (should (s-contains? "41586825"
-                           content)))))
-
+  (with-test-sandbox
+   (travis-show-project-builds "nlamirault/emacs-travis")
+   (with-current-buffer "*Travis builds*"
+     (let ((content (buffer-string)))
+       (should (s-contains? "Committer"
+                            content))))))
 
 
 (provide 'travis-mode-test)

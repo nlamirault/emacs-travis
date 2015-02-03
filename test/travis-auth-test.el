@@ -21,23 +21,25 @@
 
 ;;; Code:
 
-(require 'travis-utils)
+;; (require 'travis-utils)
 
 
 (ert-deftest test-travis-headers-after-authentication ()
-  (travis--get-auth)
-  (let ((headers (travis--get-headers)))
-    ;; (message "Headers: %s" headers)
-    (should (s-contains? "token"
-                         (assoc-default "Authorization" headers)))))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((headers (travis--get-headers)))
+     ;; (message "Headers: %s" headers)
+     (should (s-contains? "token"
+                          (assoc-default "Authorization" headers))))))
 
 
 (ert-deftest test-travis-get-hello-world ()
-  (travis--get-auth)
-  (let ((response (travis--perform-http-request "GET" "" nil 200)))
-    ;;(message "Response: %s" response)
-    (should (string-equal "hello" (caar response)))
-    (should (string-equal "world" (cdar response)))))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--perform-http-request "GET" "" nil 200)))
+     ;;(message "Response: %s" response)
+     (should (string-equal "hello" (caar response)))
+     (should (string-equal "world" (cdar response))))))
 
 
 (provide 'travis-auth-test)

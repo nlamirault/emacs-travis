@@ -21,40 +21,43 @@
 
 ;;; Code:
 
-(require 'travis-repos)
+;; (require 'travis-repos)
 
 
 (ert-deftest test-travis-get-repositories ()
-  (travis--get-auth)
-  (let ((response (travis--get-repositories)))
-    ;;(message "Response: %s" response)
-    (should (vectorp (cdar response)))
-    (mapc (lambda (r)
-            ;;(message "repo: %s" r)
-            (should (not (s-blank? (cdr (assoc 'slug r)))))
-            (should (numberp (cdr (assoc 'id r)))))
-          (cdar response))))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--get-repositories)))
+     ;;(message "Response: %s" response)
+     (should (vectorp (cdar response)))
+     (mapc (lambda (r)
+             ;;(message "repo: %s" r)
+             (should (not (s-blank? (cdr (assoc 'slug r)))))
+             (should (numberp (cdr (assoc 'id r)))))
+           (cdar response)))))
 
 (ert-deftest test-travis-get-my-repositories ()
-  (travis--get-auth)
-  (let ((response (travis--get-repository "nlamirault")))
-    (mapc (lambda (r)
-            ;; (message "repo: %s" r)
-            (should (s-contains? "nlamirault/"
-                                 (cdr (assoc 'slug r)))))
-          (cdar response))))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--get-repository "nlamirault")))
+     (mapc (lambda (r)
+             ;; (message "repo: %s" r)
+             (should (s-contains? "nlamirault/"
+                                  (cdr (assoc 'slug r)))))
+           (cdar response)))))
 
 (ert-deftest test-travis-get-single-repository ()
-  (travis--get-auth)
-  (let ((response (travis--get-repository "nlamirault/scame")))
-    ;; (message "Repo : %s" response)
-    (should (not (vectorp (cdar response))))
-    (should (string-equal "Emacs Lisp"
-                          (cdr (assoc 'github_language (cdar response)))))
-    (should (numberp (cdr (assoc 'last_build_id (cdar response)))))
-    (should (s-numeric? (cdr (assoc 'last_build_number (cdar response)))))
-    (should (string-equal "nlamirault/scame"
-                          (cdr (assoc 'slug (cdar response)))))))
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--get-repository "nlamirault/scame")))
+     ;; (message "Repo : %s" response)
+     (should (not (vectorp (cdar response))))
+     (should (string-equal "Emacs Lisp"
+                           (cdr (assoc 'github_language (cdar response)))))
+     (should (numberp (cdr (assoc 'last_build_id (cdar response)))))
+     (should (s-numeric? (cdr (assoc 'last_build_number (cdar response)))))
+     (should (string-equal "nlamirault/scame"
+                           (cdr (assoc 'slug (cdar response))))))))
 
 (provide 'travis-repos-test)
 ;;; travis-repos-test.el ends here

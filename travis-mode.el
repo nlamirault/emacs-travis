@@ -65,7 +65,10 @@
                    ;;(cdr (assoc 'last_build_state p))
                    (colorize-build-state (cdr (assoc 'last_build_state p)))
                    (cdr (assoc 'slug p))
-                   (cdr (assoc 'description p)))))
+                   (let ((desc (cdr (assoc 'description p))))
+                     (if desc
+                         desc
+                       "")))))
           (cdar projects)))
 
 ;; Travis projects mode

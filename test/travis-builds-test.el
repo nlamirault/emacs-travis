@@ -22,21 +22,21 @@
 ;;; Code:
 
 
-(require 'travis-builds)
-
+;;(require 'travis-builds)b
 
 (ert-deftest test-travis-get-builds-for-repo ()
-  (travis--get-auth)
-  (let ((response (travis--get-builds "nlamirault/scame")))
-    ;;(message "Builds : %s" response)
-    (should (vectorp (cdar response)))
-    (mapc (lambda (b)
+  (with-test-sandbox
+   (travis--get-auth)
+   (let ((response (travis--get-builds "nlamirault/scame")))
+     ;;(message "Builds : %s" response)
+     (should (vectorp (cdar response)))
+     (mapc (lambda (b)
              ;; (message "Build : %s" b)
              (should (not (s-blank? (cdr (assoc 'message b)))))
              (should (not (s-blank? (cdr (assoc 'author_email b)))))
              (should (not (s-blank? (cdr (assoc 'author_name b)))))
              (should (numberp (cdr (assoc 'id b)))))
-          (cdar response))))
+           (cdar response)))))
 
 (provide 'travis-builds-test)
 ;;; travis-builds-test.el ends here
