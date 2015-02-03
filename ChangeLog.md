@@ -1,7 +1,8 @@
 # emacs-travis ChangeLog
 
-# Version 0.5.0 (IN PROGRESS)
+# Version 0.5.0 (02/03/2015)
 
+- ``FIX`` Display projects fails when no description available
 - Update unit tests configuration for [overseer][]
 - ``FIX`` unit tests for travis builds
 

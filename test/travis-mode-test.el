@@ -31,13 +31,14 @@
                 (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-projects ()
+  :tags '(current)
   (with-test-sandbox
    (travis-show-projects "nlamirault")
    (with-current-buffer "*Travis projects*"
      (let ((content (buffer-string)))
-       (should (s-contains? "nlamirault/emacs-gitlab   A Gitlab client for Emacs"
+       (should (s-contains? "nlamirault/emacs-gitlab"
                             content))
-       (should (s-contains? "nlamirault/emacs-travis   An Emacs client for TravisCI"
+       (should (s-contains? "nlamirault/emacs-travis"
                             content))))))
 
 (ert-deftest test-travis-mode-builds-keybindings ()
