@@ -31,7 +31,6 @@
                 (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-projects ()
-  :tags '(current)
   (with-test-sandbox
    (travis-show-projects "nlamirault")
    (with-current-buffer "*Travis projects*"
