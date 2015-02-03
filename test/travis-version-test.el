@@ -25,7 +25,6 @@
 
 (setq current-version "0.5.0")
 
-
 (ert-deftest travis-library-version ()
   (with-test-sandbox
    (should (string= current-version (travis--library-version)))))
