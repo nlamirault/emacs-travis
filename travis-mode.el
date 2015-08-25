@@ -35,6 +35,24 @@
 (require 'travis-repos)
 (require 'travis-ui)
 
+(defconst travis-website "https://travis-ci.org/")
+
+;; Actions
+
+(defun travis--open-travis-project (id)
+  "Go to the Travis web page."
+  (let ((project (travis--get-repository id)))
+    (if project
+        ;;(browse-url
+        (message
+         (concat travis-website
+                 (assoc-default 'slug (cdar project))))
+      (message "Project not found: %s %s" id project))))
+
+(defun travis-goto-project ()
+  (interactive)
+  (travis--open-travis-project (tabulated-list-get-id)))
+
 
 ;; Projects
 ;; ----------
@@ -84,7 +102,7 @@
 
 (defvar travis-projects-mode-map
   (let ((map (make-keymap)))
-    ;; (define-key map (kbd "w") 'travis-goto-project)
+    (define-key map (kbd "w") 'travis-goto-project)
     map)
   "Keymap for `travis-projects-mode' major mode.")
 

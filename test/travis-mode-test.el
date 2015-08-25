@@ -40,11 +40,11 @@
        (should (s-contains? "nlamirault/emacs-travis"
                             content))))))
 
-(ert-deftest test-travis-mode-builds-keybindings ()
-  (with-test-sandbox
-   (travis-project-builds-mode)
-   (should (eql 'travis-goto-project
-                (key-binding (kbd "w"))))))
+;; (ert-deftest test-travis-mode-builds-keybindings ()
+;;   (with-test-sandbox
+;;    (travis-project-builds-mode)
+;;    (should (eql 'travis-goto-project
+;;                 (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-project-builds ()
   (with-test-sandbox
