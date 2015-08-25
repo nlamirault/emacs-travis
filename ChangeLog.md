@@ -1,5 +1,11 @@
 # emacs-travis ChangeLog
 
+# Version 0.6.0 (25/08/2015)
+
+- Key binding to open in browser the project's page in Travis website
+- Refactoring to display one or more Travis projects status
+- ``FIX`` Remove *helm*
+
 # Version 0.5.0 (02/03/2015)
 
 - ``FIX`` Display projects fails when no description available

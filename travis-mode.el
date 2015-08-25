@@ -35,6 +35,24 @@
 (require 'travis-repos)
 (require 'travis-ui)
 
+(defconst travis-website "https://travis-ci.org/")
+
+;; Actions
+
+(defun travis--open-travis-project (id)
+  "Go to the Travis web page."
+  (let ((project (travis--get-repository id)))
+    (if project
+        ;;(browse-url
+        (message
+         (concat travis-website
+                 (assoc-default 'slug (cdar project))))
+      (message "Project not found: %s %s" id project))))
+
+(defun travis-goto-project ()
+  (interactive)
+  (travis--open-travis-project (tabulated-list-get-id)))
+
 
 ;; Projects
 ;; ----------
@@ -53,23 +71,30 @@
   (pop-to-buffer "*Travis projects*" nil)
   (travis-projects-mode)
   (setq tabulated-list-entries
-        (create-projects-entries (travis--get-repository slug)))
+        (travis--create-projects-entries (travis--get-repository slug)))
   (tabulated-list-print t))
 
-(defun create-projects-entries (projects)
+
+(defun travis--create-project-entry (p)
+  (list (format "%s" (cdr (assoc 'id p)))
+        (vector ;id
+         ;;(cdr (assoc 'last_build_state p))
+         (colorize-build-state (cdr (assoc 'last_build_state p)))
+         (cdr (assoc 'slug p))
+         (let ((desc (cdr (assoc 'description p))))
+           (if desc
+               desc
+             "")))))
+
+
+(defun travis--create-projects-entries (projects)
   "Create entries for 'tabulated-list-entries from PROJECTS."
-  (mapcar (lambda (p)
-            ;(let ((id (number-to-string (cdr (assoc 'id p)))))
-            (list (format "%s" (cdr (assoc 'id p)))
-                  (vector ;id
-                   ;;(cdr (assoc 'last_build_state p))
-                   (colorize-build-state (cdr (assoc 'last_build_state p)))
-                   (cdr (assoc 'slug p))
-                   (let ((desc (cdr (assoc 'description p))))
-                     (if desc
-                         desc
-                       "")))))
-          (cdar projects)))
+  (let ((data (cdar projects)))
+    (if (eql 'vector (type-of data))
+        (mapcar (lambda (p)
+                  (travis--create-project-entry p))
+                data)
+      (list (travis--create-project-entry data)))))
 
 ;; Travis projects mode
 
@@ -100,7 +125,7 @@
 
 ;; Builds
 
-(defun create-builds-entries (builds)
+(defun travis--create-builds-entries (builds)
   "Create entries for 'tabulated-list-entries from BUILDS."
   (mapcar (lambda (b)
             ;(let ((id (number-to-string (cdr (assoc 'id b)))))
@@ -135,7 +160,7 @@
   (pop-to-buffer "*Travis builds*" nil)
   (travis-project-builds-mode)
   (setq tabulated-list-entries
-        (create-builds-entries (travis--get-builds slug)))
+        (travis--create-builds-entries (travis--get-builds slug)))
   (tabulated-list-print t))
 
 

@@ -1,13 +1,10 @@
 ;;; Scame Cask file
 
-(source "melpa" "http://melpa.milkbox.net/packages/")
+(source "melpa" "http://melpa.org/packages/")
 (source "gnu" "http://elpa.gnu.org/packages/")
-(source "marmalade" "http://marmalade-repo.org/packages/")
 
 (package-file "travis.el")
 (files "*.el" (:exclude ".dir-locals.el"))
-
-(depends-on "helm" "1.0")
 
 ;; Development
 (development
