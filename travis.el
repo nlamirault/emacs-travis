@@ -2,7 +2,7 @@
 
 ;; Author: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 ;; URL: https://github.com/nlamirault/emacs-travis
-;; Version: 0.5.0
+;; Version: 0.6.0
 ;; Keywords: travis
 
 ;; Package-Requires: ((s "1.9.0") (dash "2.9.0") (pkg-info "0.5.0") (request "0.1.0"))
