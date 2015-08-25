@@ -84,7 +84,7 @@
 
 (defvar travis-projects-mode-map
   (let ((map (make-keymap)))
-    (define-key map (kbd "w") 'travis-goto-project)
+    ;; (define-key map (kbd "w") 'travis-goto-project)
     map)
   "Keymap for `travis-projects-mode' major mode.")
 
