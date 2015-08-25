@@ -1,6 +1,6 @@
 ;;; travis-version.el --- Travis Emacs client version
 
-;; Copyright (C) 2014 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+;; Copyright (C) 2014, 2015 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -29,12 +29,6 @@
   "Get the version in the emacs-travis client header."
   (-when-let (version (pkg-info-library-version 'travis))
     (pkg-info-format-version version)))
-
-;; (defun emacs-travis-package-version ()
-;;   "Get the package version of emacs-travis.
-;; This is the version number of the installed emacs-travis package."
-;;   (-when-let (version (pkg-info-package-version 'emacs-travis-mode))
-;;     (pkg-info-format-version version)))
 
 
 (provide 'travis-version)
