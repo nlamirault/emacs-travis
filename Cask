@@ -6,8 +6,6 @@
 (package-file "travis.el")
 (files "*.el" (:exclude ".dir-locals.el"))
 
-(depends-on "helm" "1.0")
-
 ;; Development
 (development
  (depends-on "f")

@@ -8,7 +8,6 @@
 
 `emacs-travis` provides :
 * a REST client to the [Travis][] API
-* a [Helm][] interface
 
 ## Installation
 
