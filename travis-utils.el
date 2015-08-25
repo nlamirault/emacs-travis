@@ -90,27 +90,6 @@ Defaults to `error'."
       headers)))
 
 
-;; (defun travis--perform-get-request (uri params)
-;;   "Perform a HTTP GET request to TravisCI host using URI and PARAMS."
-;;   (let* ((response (request (travis--get-rest-uri uri)
-;;                             :type "GET"
-;;                             :headers (travis--get-headers)
-;;                             :sync t
-;;                             :params params
-;;                             :parser 'json-read)))
-;;     response))
-
-;; (defun travis--perform-post-request (uri params)
-;;   "Perform a HTTP POST request to TravisCI host using URI and PARAMS."
-;;   (let ((response (request (travis--get-rest-uri uri)
-;;                            :type "POST"
-;;                            :headers (travis--get-headers)
-;;                            :sync t
-;;                            :data params
-;;                            :parser 'json-read)))
-;;     response))
-
-
 (defun travis--perform-http-request (method uri params status-code)
   "Do a HTTP METHOD request using URI and PARAMS.
 If HTTP return code is STATUS-CODE, send the response content otherwise
