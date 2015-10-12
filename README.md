@@ -1,6 +1,6 @@
 # emacs-travis
 
-[![License GPL 3][badge-license]][LICENSE]
+[![License GPL 2][badge-license]][LICENSE]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
 
 Master :
