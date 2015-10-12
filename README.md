@@ -1,24 +1,70 @@
 # emacs-travis
 
-[![travis][badge-travis]][travis]
-[![drone][badge-drone]][drone]
-[![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
-[![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
+[![License GPL 3][badge-license]][LICENSE]
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
 
-`emacs-travis` provides :
-* a REST client to the [Travis][] API
+Master :
+* [![MELPA Stable](http://stable.melpa.org/packages/gitlab-badge.svg)](http://stable.melpa.org/#/gitlab)
+* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/master)
+
+Develop:
+* [![Melpa Status](http://melpa.milkbox.net/packages/gitlab-badge.svg)](http://melpa.milkbox.net/#/gitlab)
+* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/develop)
+
+`travis` provides a REST client to the [Travis][] API
 
 ## Installation
 
-The recommended way to install ``emacs-travis`` is via [MELPA][]:
+### Installation via package.el
 
-    M-x package-install travis
+`package.el` is the built-in package manager in Emacs.
 
-or [Cask][]:
+emacs-travis is available on the two major community maintained repositories -
+[MELPA STABLE](melpa-stable.milkbox.net), [MELPA](http://melpa.milkbox.net).
 
-	(depends-on "travis")
+You can install `travis` with the following commnad:
 
+<kbd>M-x package-install [RET] travis [RET]</kbd>
+
+or by adding this bit of Emacs Lisp code to your Emacs initialization file
+(`.emacs` or `init.el`):
+
+```el
+(unless (package-installed-p 'travis)
+  (package-install 'travis))
+```
+
+If the installation doesn't work try refreshing the package list:
+
+<kbd>M-x package-refresh-contents [RET]</kbd>
+
+Keep in mind that MELPA packages are built automatically from
+the `master` branch, meaning bugs might creep in there from time to
+time. Never-the-less, installing from MELPA is the recommended way of
+obtaining emacs-travis, as the `master` branch is normally quite stable and
+"stable" (tagged) builds are released somewhat infrequently.
+
+With the most recent builds of Emacs, you can pin emacs-travis to always
+use MELPA Stable by adding this to your Emacs initialization:
+
+```el
+(add-to-list 'package-pinned-packages '(travis . "melpa-stable") t)
+```
+
+### Via el-get
+
+[el-get](https://github.com/dimitri/el-get) is another popular package manager for Emacs. If you're an el-get
+user just do <kbd>M-x el-get-install [RET] travis [RET]</kbd>.
+
+### Manual
+
+You can install emacs-travis manually by placing it on your `load-path` and
+`require` ing it. Many people favour the folder `~/.emacs.d/vendor`.
+
+```el
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'travis)
+```
 
 ## Usage
 
@@ -73,15 +119,11 @@ See [LICENSE](LICENSE).
 
 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
+
 [emacs-travis]: https://github.com/nlamirault/emacs-travis
 [badge-license]: https://img.shields.io/badge/license-GPL_2-green.svg?style=flat
 [LICENSE]: https://github.com/nlamirault/emacs-travis/blob/master/LICENSE
-[travis]: https://travis-ci.org/nlamirault/emacs-travis
-[badge-travis]: http://img.shields.io/travis/nlamirault/emacs-travis.svg?style=flat
-[badge-drone]: https://drone.io/github.com/nlamirault/emacs-travis/status.png
-[drone]: https://drone.io/github.com/nlamirault/emacs-travis/latest
-[badge-wercker]: https://app.wercker.com/status/230e39942045191c79677ed663572c69/s
-[wercker]: https://app.wercker.com/project/bykey/230e39942045191c79677ed663572c69
+
 [GNU Emacs]: https://www.gnu.org/software/emacs/
 [MELPA]: http://melpa.milkbox.net/
 [Cask]: http://cask.github.io/
