@@ -4,12 +4,12 @@
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
 
 Master :
-* [![MELPA Stable](http://stable.melpa.org/packages/gitlab-badge.svg)](http://stable.melpa.org/#/gitlab)
-* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/master)
+* [![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
+* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-travis/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-travis/tree/master)
 
 Develop:
-* [![Melpa Status](http://melpa.milkbox.net/packages/gitlab-badge.svg)](http://melpa.milkbox.net/#/gitlab)
-* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-gitlab/tree/develop)
+* [![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
+* [![Circle CI](https://circleci.com/gh/nlamirault/emacs-travis/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-travis/tree/develop)
 
 `travis` provides a REST client to the [Travis][] API
 
