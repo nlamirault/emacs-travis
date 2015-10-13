@@ -25,12 +25,14 @@
 
 
 (ert-deftest test-travis-mode-projects-keybindings ()
+  :tags '(mode)
   (with-test-sandbox
    (travis-projects-mode)
    (should (eql 'travis-goto-project
                 (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-projects ()
+  :tags '(mode)
   (with-test-sandbox
    (travis-show-projects "nlamirault")
    (with-current-buffer "*Travis projects*"
@@ -47,6 +49,7 @@
 ;;                 (key-binding (kbd "w"))))))
 
 (ert-deftest test-travis-mode-show-project-builds ()
+  :tags '(mode)
   (with-test-sandbox
    (travis-show-project-builds "nlamirault/emacs-travis")
    (with-current-buffer "*Travis builds*"

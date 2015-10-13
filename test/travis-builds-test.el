@@ -25,6 +25,7 @@
 ;;(require 'travis-builds)b
 
 (ert-deftest test-travis-get-builds-for-repo ()
+  :tags '(builds)
   (with-test-sandbox
    (travis--get-auth)
    (let ((response (travis--get-builds "nlamirault/scame")))

@@ -34,6 +34,7 @@
     (should (cl-find f faces))))
 
 (ert-deftest test-travis-ui-colors-states ()
+  :tags '(ui)
   (with-test-sandbox
    (let ((faces (face-list)))
      (test-travis-face "canceled" 'travis--gray-face faces)

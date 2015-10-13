@@ -26,10 +26,12 @@
 (setq current-version "0.7.0")
 
 (ert-deftest travis-library-version ()
+  :tags '(version)
   (with-test-sandbox
    (should (string= current-version (travis--library-version)))))
 
 (ert-deftest emacs-travis-version ()
+  :tags '(version)
   (with-test-sandbox
    (should (string= current-version (emacs-travis-version)))))
 

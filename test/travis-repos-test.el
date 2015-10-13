@@ -25,6 +25,7 @@
 
 
 (ert-deftest test-travis-get-repositories ()
+  :tags '(repositores)
   (with-test-sandbox
    (travis--get-auth)
    (let ((response (travis--get-repositories)))
@@ -37,6 +38,7 @@
            (cdar response)))))
 
 (ert-deftest test-travis-get-my-repositories ()
+  :tags '(repositores)
   (with-test-sandbox
    (travis--get-auth)
    (let ((response (travis--get-repository "nlamirault")))
@@ -47,6 +49,7 @@
            (cdar response)))))
 
 (ert-deftest test-travis-get-single-repository ()
+  :tags '(repositores)
   (with-test-sandbox
    (travis--get-auth)
    (let ((response (travis--get-repository "nlamirault/scame")))

@@ -25,6 +25,7 @@
 
 
 (ert-deftest test-travis-headers-after-authentication ()
+  :tags '(auth)
   (with-test-sandbox
    (travis--get-auth)
    (let ((headers (travis--get-headers)))

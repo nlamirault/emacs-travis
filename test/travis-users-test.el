@@ -24,6 +24,7 @@
 ;; (require 'travis-users)
 
 (ert-deftest test-travis-get-users ()
+  :tags '(users)
   (with-test-sandbox
    (travis--get-auth)
    (let ((response (travis--get-users)))

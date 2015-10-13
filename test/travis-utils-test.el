@@ -26,6 +26,7 @@
 ;; (require 'travis-utils)
 
 (ert-deftest test-travis-api-headers-without-authentication ()
+  :tags '(utils)
   (with-test-sandbox
    (let ((headers (travis--get-headers))
          (version (travis--library-version))
