@@ -15,6 +15,8 @@
 
 APP = travis
 
+SHELL = /bin/bash
+
 EMACS ?= emacs
 EMACSFLAGS = -L .
 CASK = cask
