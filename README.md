@@ -4,11 +4,11 @@
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
 
 Master :
-* [![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
+* [![MELPA Stable](https://stable.melpa.org/packages/travis-badge.svg)](https://stable.melpa.org/#/travis)
 * [![Circle CI](https://circleci.com/gh/nlamirault/emacs-travis/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-travis/tree/master)
 
 Develop:
-* [![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
+* [![Melpa Status](https://melpa.org/packages/travis-badge.svg)](https://melpa.org/#/travis)
 * [![Circle CI](https://circleci.com/gh/nlamirault/emacs-travis/tree/develop.svg?style=svg)](https://circleci.com/gh/nlamirault/emacs-travis/tree/develop)
 
 `travis` provides a REST client to the [Travis][] API
@@ -125,7 +125,7 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [LICENSE]: https://github.com/nlamirault/emacs-travis/blob/master/LICENSE
 
 [GNU Emacs]: https://www.gnu.org/software/emacs/
-[MELPA]: http://melpa.milkbox.net/
+[MELPA]: https://melpa.org
 [Cask]: http://cask.github.io/
 [Issue tracker]: https://github.com/nlamirault/emacs-travis/issues
 [Helm]: https://github.com/emacs-helm/helm
