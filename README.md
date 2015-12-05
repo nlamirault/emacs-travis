@@ -2,8 +2,8 @@
 
 [![travis][badge-travis]][travis]
 [![drone][badge-drone]][drone]
-[![Melpa Status](http://melpa.milkbox.net/packages/travis-badge.svg)](http://melpa.milkbox.net/#/travis)
-[![MELPA Stable](http://stable.melpa.org/packages/travis-badge.svg)](http://stable.melpa.org/#/travis)
+[![Melpa Status](https://melpa.org/packages/travis-badge.svg)](https://melpa.org/#/travis)
+[![MELPA Stable](https://stable.melpa.org/packages/travis-badge.svg)](https://stable.melpa.org/#/travis)
 [![Coverage Status](https://coveralls.io/repos/nlamirault/emacs-travis/badge.png)](https://coveralls.io/r/nlamirault/emacs-travis)
 
 `emacs-travis` provides :
@@ -83,7 +83,7 @@ Nicolas Lamirault <nicolas.lamirault@gmail.com>
 [badge-wercker]: https://app.wercker.com/status/230e39942045191c79677ed663572c69/s
 [wercker]: https://app.wercker.com/project/bykey/230e39942045191c79677ed663572c69
 [GNU Emacs]: https://www.gnu.org/software/emacs/
-[MELPA]: http://melpa.milkbox.net/
+[MELPA]: https://melpa.org/
 [Cask]: http://cask.github.io/
 [Issue tracker]: https://github.com/nlamirault/emacs-travis/issues
 [Helm]: https://github.com/emacs-helm/helm
